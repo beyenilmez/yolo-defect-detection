@@ -3,8 +3,8 @@ Main Application Entry Point
 Automated Defect Detection System for Quality Control
 """
 import streamlit as st
-from detection import DefectDetectionSystem
-from video_processor import (
+from src.detection import DefectDetectionSystem
+from src.video_processor import (
     process_video_stream,
     create_video_capture_from_file,
     create_camera_capture,
@@ -13,7 +13,7 @@ from video_processor import (
     process_folder_sequential,
     process_folder_watch
 )
-from ui_components import (
+from src.ui_components import (
     render_sidebar_controls,
     render_main_dashboard,
     update_dashboard

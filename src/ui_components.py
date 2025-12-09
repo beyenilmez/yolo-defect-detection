@@ -5,12 +5,12 @@ Handles Streamlit UI components and dashboard updates
 import streamlit as st
 import os
 import torch
-from preprocessing import (
+from .preprocessing import (
     PreprocessingConfig, 
     get_preset, 
     get_preset_names
 )
-from model_registry import (
+from .model_registry import (
     get_all_models,
     get_model,
     get_default_model

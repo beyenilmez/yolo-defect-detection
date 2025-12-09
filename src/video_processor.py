@@ -10,8 +10,8 @@ import streamlit as st
 import os
 from pathlib import Path
 from datetime import datetime
-from detection import DefectDetectionSystem
-from preprocessing import apply_preprocessing, PreprocessingConfig
+from .detection import DefectDetectionSystem
+from .preprocessing import apply_preprocessing, PreprocessingConfig
 
 
 def save_defect_image(processed_img, defect_details, save_dir, use_tracking=False):

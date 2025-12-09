@@ -269,15 +269,21 @@ MODEL_REGISTRY["custom_model"] = CUSTOM_MODEL
 ### File Structure
 ```
 project/
-├── app.py                 # Main application entry point
-├── detection.py           # Defect detection system
-├── video_processor.py     # Video/image processing logic
-├── ui_components.py       # Streamlit UI components
-├── preprocessing.py       # Image preprocessing module
-├── model_registry.py      # Model management system
-├── requirements.txt       # Python dependencies
+├── app.py                 # Main application entry point (Streamlit)
+├── src/                   # Source code package
+│   ├── __init__.py       # Package initialization
+│   ├── detection.py       # Defect detection system
+│   ├── video_processor.py # Video/image processing logic
+│   ├── ui_components.py   # Streamlit UI components
+│   ├── preprocessing.py  # Image preprocessing module
+│   └── model_registry.py # Model management system
 ├── models/               # YOLO model files
 │   └── steel.pt
+├── test/                 # Test data
+│   ├── images/           # Test images
+│   └── videos/          # Test videos
+├── requirements.txt      # Python dependencies
+├── README.md            # Project documentation
 └── defect_images/        # Saved defect images (created automatically)
 ```
 

@@ -180,5 +180,15 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
 # Windows
 desktop.ini
+Thumbs.db
+ehthumbs.db
+
+# App
+defect_images/ 

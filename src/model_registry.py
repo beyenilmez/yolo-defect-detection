@@ -31,7 +31,7 @@ class ModelInfo:
 # Steel defect detection model (Default)
 STEEL_MODEL = ModelInfo(
     id="steel",
-    name="Steel Defect Detection (Default)",
+    name="Steel Defect Detection",
     description="Custom model for detecting steel surface defects: crazing, inclusion, patches, pitted_surface, rolled-in_scale, scratches",
     model_path="models/steel.pt",
     classes=[
@@ -45,9 +45,85 @@ STEEL_MODEL = ModelInfo(
     task="detect"
 )
 
+# PCB defect detection model
+PCB_MODEL = ModelInfo(
+    id="pcb",
+    name="PCB Defect Detection",
+    description="Custom model for detecting PCB defects: copper, mousebite, open, pin-hole, short, spur",
+    model_path="models/pcb.pt",
+    classes=[
+        "copper",
+        "mousebite",
+        "open",
+        "pin-hole",
+        "short",
+        "spur"
+    ],
+    task="detect"
+)
+
+# Fabric defect detection model
+FABRIC_MODEL = ModelInfo(
+    id="fabric",
+    name="Fabric Defect Detection",
+    description="Custom model for detecting fabric defects: hole, objects, oil spot, thread error",
+    model_path="models/fabric.pt",
+    classes=[
+        "hole",
+        "objects",
+        "oil spot",
+        "thread error"
+    ],
+    task="detect"
+)
+
+# Leather defect detection model
+LEATHER_MODEL = ModelInfo(
+    id="leather",
+    name="Leather Defect Detection",
+    description="Custom model for detecting leather defects: Bacterial Injury, Crease, Growth Marks, Healed Injury, Hole, Rotten surface, Scratch, pinhole",
+    model_path="models/leather.pt",
+    classes=[
+        "Bacterial Injury",
+        "Crease",
+        "Growth Marks",
+        "Healed Injury",
+        "Hole",
+        "Rotten surface",
+        "Scratch",
+        "pinhole"
+    ],
+    task="detect"
+)
+
+# Wood defect detection model
+WOOD_MODEL = ModelInfo(
+    id="wood",
+    name="Wood Defect Detection",
+    description="Custom model for detecting wood defects: Blue_Stain, Crack, Dead_Knot, Knot_missing, Live_Knot, Marrow, Quartzity, knot_with_crack, overgrown, resin",
+    model_path="models/wood.pt",
+    classes=[
+        "Blue_Stain",
+        "Crack",
+        "Dead_Knot",
+        "Knot_missing",
+        "Live_Knot",
+        "Marrow",
+        "Quartzity",
+        "knot_with_crack",
+        "overgrown",
+        "resin"
+    ],
+    task="detect"
+)
+
 # Registry dictionary - maps model ID to ModelInfo
 MODEL_REGISTRY: Dict[str, ModelInfo] = {
     STEEL_MODEL.id: STEEL_MODEL,
+    PCB_MODEL.id: PCB_MODEL,
+    FABRIC_MODEL.id: FABRIC_MODEL,
+    LEATHER_MODEL.id: LEATHER_MODEL,
+    WOOD_MODEL.id: WOOD_MODEL,
 }
 
 

@@ -22,14 +22,13 @@ This project implements an automated defect detection system for manufacturing q
   - Watch folder mode for continuous monitoring of new images
 
 ### 🧠 Model Management
-- **Model Registry System**: Manage multiple YOLO models
-- **Default Model**: Custom steel defect detection model trained for:
-  - Crazing
-  - Inclusion
-  - Patches
-  - Pitted surface
-  - Rolled-in scale
-  - Scratches
+- **Model Registry System**: Manage multiple YOLO models for different defect types
+- **Multiple Pre-trained Models**: 
+  - **Steel Defect Detection**: Crazing, Inclusion, Patches, Pitted surface, Rolled-in scale, Scratches
+  - **PCB Defect Detection**: Copper, Mousebite, Open, Pin-hole, Short, Spur
+  - **Fabric Defect Detection**: Hole, Objects, Oil spot, Thread error
+  - **Leather Defect Detection**: Bacterial Injury, Crease, Growth Marks, Healed Injury, Hole, Rotten surface, Scratch, Pinhole
+  - **Wood Defect Detection**: Blue_Stain, Crack, Dead_Knot, Knot_missing, Live_Knot, Marrow, Quartzity, Knot_with_crack, Overgrown, Resin
 - **Easy Model Switching**: Select models from dropdown menu
 - **Model Information Display**: Shows model description and detected classes
 
@@ -132,10 +131,14 @@ pip install -r requirements.txt
 ```
 
 ### 4. Model Setup
-Ensure the model file exists:
-- Default model: `models/steel.pt`
-- The model registry (`model_registry.py`) manages available models
-- To add new models, register them in the model registry
+Ensure the model files exist in the `models/` directory:
+- **Steel Defect Detection**: `models/steel.pt` (default)
+- **PCB Defect Detection**: `models/pcb.pt`
+- **Fabric Defect Detection**: `models/fabric.pt`
+- **Leather Defect Detection**: `models/leather.pt`
+- **Wood Defect Detection**: `models/wood.pt`
+
+The model registry (`src/model_registry.py`) manages all available models. Only models with existing `.pt` files will be available in the dropdown menu. To add new models, register them in the model registry.
 
 ## ▶️ How to Run
 
@@ -224,8 +227,12 @@ A browser window will open automatically at `http://localhost:8501`.
 
 ## 🧠 Model Information
 
-### Default Model: Steel Defect Detection
-- **Model Type**: Custom YOLO model
+### Available Models
+
+The system includes multiple pre-trained YOLO models for different defect detection scenarios:
+
+#### 1. Steel Defect Detection
+- **Model Path**: `models/steel.pt`
 - **Classes Detected**: 
   - Crazing
   - Inclusion
@@ -233,14 +240,62 @@ A browser window will open automatically at `http://localhost:8501`.
   - Pitted surface
   - Rolled-in scale
   - Scratches
-- **Model Path**: `models/steel.pt`
+- **Use Case**: Quality control for steel surface manufacturing
+
+#### 2. PCB Defect Detection
+- **Model Path**: `models/pcb.pt`
+- **Classes Detected**: 
+  - Copper
+  - Mousebite
+  - Open
+  - Pin-hole
+  - Short
+  - Spur
+- **Use Case**: Printed circuit board quality inspection
+
+#### 3. Fabric Defect Detection
+- **Model Path**: `models/fabric.pt`
+- **Classes Detected**: 
+  - Hole
+  - Objects
+  - Oil spot
+  - Thread error
+- **Use Case**: Textile manufacturing quality control
+
+#### 4. Leather Defect Detection
+- **Model Path**: `models/leather.pt`
+- **Classes Detected**: 
+  - Bacterial Injury
+  - Crease
+  - Growth Marks
+  - Healed Injury
+  - Hole
+  - Rotten surface
+  - Scratch
+  - Pinhole
+- **Use Case**: Leather product quality inspection
+
+#### 5. Wood Defect Detection
+- **Model Path**: `models/wood.pt`
+- **Classes Detected**: 
+  - Blue_Stain
+  - Crack
+  - Dead_Knot
+  - Knot_missing
+  - Live_Knot
+  - Marrow
+  - Quartzity
+  - Knot_with_crack
+  - Overgrown
+  - Resin
+- **Use Case**: Wood quality assessment and grading
 
 ### Adding Custom Models
 
 To add a new model:
 
 1. Place your trained `.pt` file in the `models/` directory
-2. Register the model in `model_registry.py`:
+2. Register the model in `src/model_registry.py`:
 
 ```python
 CUSTOM_MODEL = ModelInfo(
@@ -278,7 +333,11 @@ project/
 │   ├── preprocessing.py  # Image preprocessing module
 │   └── model_registry.py # Model management system
 ├── models/               # YOLO model files
-│   └── steel.pt
+│   ├── steel.pt         # Steel defect detection model
+│   ├── pcb.pt           # PCB defect detection model
+│   ├── fabric.pt        # Fabric defect detection model
+│   ├── leather.pt       # Leather defect detection model
+│   └── wood.pt          # Wood defect detection model
 ├── test/                 # Test data
 │   ├── images/           # Test images
 │   └── videos/          # Test videos
